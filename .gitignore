@@ -63,5 +63,3 @@ typings/
 # MacOS related
 .DS_Store
 
-# Config file
-config/config.json
