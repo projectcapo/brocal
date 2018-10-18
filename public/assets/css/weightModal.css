@@ -1,0 +1,19 @@
+.weightFeelIcon {
+    font-size: 3rem !important;
+}
+
+/* hide the OS/browser checkboxes/radio buttons */
+#weightLogModal input[type=checkbox], #weightLogModal input[type=radio] {
+  visibility: hidden;
+  margin: 0;
+  width: 0!important;
+}
+
+#weightLogModal input[type=checkbox] + div:hover, #weightLogModal input[type=radio] + div:hover { 
+  cursor: pointer;
+  color: lightgrey; 
+}
+
+#weightLogModal input[type=checkbox]:checked + div, #weightLogModal input[type=radio]:checked  + div{ 
+  color: #0D47A1; 
+}

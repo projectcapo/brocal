@@ -1,4 +1,59 @@
+<nav>
+    <div class="nav-wrapper blue darken-4">
+        <a href="#" class="brand-logo center">BroCal</a>
+        <ul id="nav-mobile">
+            <li>
+                <a href="">
+						<i class="fas fa-user"></i>
+					</a>
+            </li>
+            <li>
+                <a href="">
+						<i class="fas fa-bell"></i>
+					</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
 <main>
+
+    <!-- Weight Logging Modal -->
+    <div id="weightLogModal" class="modal">
+        <div class="modal-content">
+            <h4>Log your weight</h4>
+            <form>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="weight" type="number" class="validate">
+                        <label for="weight">Weight</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="col s12">How do you feel?</p>
+                </div>
+                <div id="weightFeelingSelection" class="row">
+                    <div class="col s4 center">
+                        <input id="badFeelingRadio" class="feelingSelection" name="weightFeel" type="radio" value="bad" />
+                        <div id="badFeeling" class="weightFeelIcon"><i class="fas fa-frown-open"></i></div>
+                    </div>
+                    <div class="col s4 center">
+                        <input id="okayFeelingRadio" class="feelingSelection" name="weightFeel" type="radio" value="okay" />
+                        <div id="okayFeeling" class="weightFeelIcon"><i class="fas fa-meh"></i></div>
+                    </div>
+                    <div class="col s4 center">
+                        <input id="goodFeelingRadio" class="feelingSelection" name="weightFeel" type="radio" value="good" />
+                        <div id="goodFeeling" class="weightFeelIcon"><i class="fas fa-grin"></i></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Submit</a>
+        </div>
+    </div>
+
 
 </main>
 
@@ -6,22 +61,23 @@
     <div class="container">
         <div class="row">
             <div class="col s3">
-                <a class="waves-effect waves-light btn btn-large blue accent-4">
+                <a class="waves-effect waves-light btn btn-large blue accent-4 modal-trigger footer-button">
 						<i class="fas fa-chart-line"></i>
 					</a>
             </div>
             <div class="col s3">
-                <a class="waves-effect waves-light btn btn-large blue accent-4">
+                <a class="waves-effect waves-light btn btn-large blue accent-4 modal-trigger footer-button">
 						<i class="fas fa-utensils"></i>
 					</a>
             </div>
             <div class="col s3">
-                <a class="waves-effect waves-light btn btn-large blue accent-4">
+                <a class="waves-effect waves-light btn btn-large blue accent-4 modal-trigger footer-button">
 						<i class="fas fa-beer"></i>
 					</a>
             </div>
             <div class="col s3">
-                <a class="waves-effect waves-light btn btn-large blue accent-4">
+                <a class="waves-effect waves-light btn btn-large blue accent-4 modal-trigger footer-button" 
+                    href="#weightLogModal">
 						<i class="fas fa-weight"></i>
 					</a>
             </div>
