@@ -20,8 +20,8 @@ const exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-// Need to add sequalize routes
-//require("./routes/html-routes.js")(app);
+
+require("./routes/html-routes.js")(app);
 
 // Commenting out sequalize code for now
 //db.sequelize.sync({ force: true }).then(function() {
