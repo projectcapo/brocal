@@ -32,11 +32,16 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // ROUTES 
+require("./routes/weight-routes.js")(app);
+require("./routes/food-routes.js")(app);
+require("./routes/alcohol-routes.js")(app);
+require("./routes/profile-routes.js")(app);
+require("./routes/alert-routes.js")(app);
 require("./routes/api-routes.js")(app);
 require("./routes/html-routes.js")(app);
 
 // Commenting out sequalize code for now
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync({ force: false }).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });

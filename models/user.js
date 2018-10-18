@@ -17,9 +17,6 @@ module.exports = function (sequelize, Sequelize) {
         username: {
             type: Sequelize.TEXT
         },
-        about: {
-            type: Sequelize.TEXT
-        },
         email: {
             type: Sequelize.STRING,
             validate: {
@@ -29,6 +26,27 @@ module.exports = function (sequelize, Sequelize) {
         password: {
             type: Sequelize.STRING,
             allowNull: false
+        },
+        sex: {
+            type: Sequelize.STRING
+        },
+        age: {
+            type: Sequelize.INTEGER
+        },
+        height: {
+            type: Sequelize.STRING
+        },
+        start_weight: {
+            type: Sequelize.INTEGER
+        },
+        goal_weight: {
+            type: Sequelize.INTEGER
+        },
+        goal_end_date: {
+            type: Sequelize.DATE
+        },
+        daily_caloric_intake: {
+            type: Sequelize.INTEGER
         },
         last_login: {
             type: Sequelize.DATE

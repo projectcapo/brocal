@@ -1,5 +1,4 @@
 ### Schema
-DROP DATABASE IF EXISTS brocal_db;
 CREATE DATABASE brocal_db;
 USE brocal_db;
 
