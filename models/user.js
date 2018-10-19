@@ -34,7 +34,7 @@ module.exports = function (sequelize, Sequelize) {
             type: Sequelize.INTEGER
         },
         height: {
-            type: Sequelize.STRING
+            type: Sequelize.INTEGER
         },
         start_weight: {
             type: Sequelize.INTEGER

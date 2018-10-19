@@ -1,55 +1,24 @@
-<main>
-    <div class="container">
+<div class="container">
+    <div class="row">
+        <div class="col s12 center">
+            <h3 class="blue-text text-darken-4">What Up!</h3>
+            <p>Login to contine bro.</p>
+        </div>
+    </div>
+    <form id="signin" name="signin" method="post" action="/signin" class="row">
+        <div class="input-field inline col s12">
+            <input name="email" id="email_inline" type="email" class="validate">
+            <label for="email_inline">Email</label>
+        </div>
+        <div class="input-field inline col s12">
+            <label for="password">Password</label>
+            <input name="password" type="password" />
+        </div>
         <div class="row">
-            <div class="col s12 center">
-                <h3 class="blue-text text-darken-4">What Up!</h3>
-                <p>Login to contine bro.</p>
-            </div>
+            <input class="btn btn-large center col s12 blue accent-4" type="submit" value="Sign In" />
         </div>
-        <form id="signin" name="signin" method="post" action="/signin" class="row">
-            <div class="input-field inline col s12">
-                <input name="email" id="email_inline" type="email" class="validate">
-                <label for="email_inline">Email</label>
-            </div>
-            <div class="input-field inline col s12">
-                <label for="password">Password</label>
-                <input name="password" type="password" />
-            </div>
-            <div class="row">
-                <input class="btn btn-large center col s12 blue accent-4" type="submit" value="Sign In" />
-            </div>
-            <div class="row">
-                <a href="#accountCreationModal" class="btn btn-large center col s12 blue darken-4 modal-trigger">Register</a>
-            </div>
-        </form>
-    </div>
-
-
-
-    <!-- Account Creation Modal -->
-    <div id="accountCreationModal" class="modal">
-        <div class="modal-content">
-            <h4>Account Creation</h4>
-            <form class="row" id="signup" name="signup" method="post" action="/signup">
-                <div class="input-field inline col s6">
-                    <label for="firstname">First Name</label>
-                    <input name="firstname" type="text" />
-                </div>
-                <div class="input-field inline col s6">
-                    <label for="lastname">Last Name</label>
-                    <input name="lastname" type="text" />
-                </div>
-                <div class="input-field inline col s6">
-                    <label for="email">Email Address</label>
-                    <input class="text" name="email" type="email" />
-                </div>
-                <div class="input-field inline col s6">
-                    <label for="password">Password</label>
-                    <input name="password" type="password" />
-                </div>
-                <input class="btn" type="submit" value="Sign Up" />
-            </form>
+        <div class="row">
+            <a href="/signup" class="btn btn-large center col s12 blue darken-4 modal-trigger">Register</a>
         </div>
-    </div>
-
-</main>
+    </form>
+</div>

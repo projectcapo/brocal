@@ -1,0 +1,50 @@
+<div class="container">
+    <h4>Account Profile</h4>
+
+    <form class="row" id="signup" name="signup" method="put" action="/api/profile">
+        <input name="id" value="{{dataValues.id}}" type="hidden" />
+        <div class="input-field inline col s6">
+            <label for="firstname">First Name</label>
+            <input name="firstname" type="text" value="{{dataValues.firstname}}" />
+        </div>
+        <div class="input-field inline col s6">
+            <label for="lastname">Last Name</label>
+            <input name="lastname" type="text" value="{{dataValues.lastname}}"/>
+        </div>
+        <div class="input-field inline col s6">
+            <label for="age">Age</label>
+            <input name="age" type="number" value="{{dataValues.age}}"/>
+        </div>
+        <div class="input-field inline col s6">
+            <select name="sex">
+                <option value="" disabled selected>Choose Gender</option>
+                <option value="male" {{#if male}}selected{{/if}}>Male</option>
+                <option value="female" {{#if female}}selected{{/if}}>Female</option>
+            </select>
+            <label>Sex</label>
+        </div>
+        <div class="input-field inline col s6">
+            <label for="height">Height</label>
+            <input name="height" type="text" value="{{dataValues.height}}"/>
+        </div>
+        <div class="input-field inline col s6">
+            <label for="start_weight">Start Weight</label>
+            <input name="start_weight" type="number" value="{{dataValues.start_weight}}"/>
+        </div>
+        <div class="input-field inline col s6">
+            <label for="goal_weight">Goal Weight</label>
+            <input name="goal_weight" type="number" value="{{dataValues.goal_weight}}"/>
+        </div>
+        <div class="input-field inline col s6">
+            <label for="goal_end_date">Goal End Date</label>
+            <input id="goal_end_date" class="datepicker" name="goal_end_date" type="text" value=""/>
+        </div>
+        <div class="input-field inline col s12">
+            <label for="email">Email Address</label>
+            <input class="text" name="email" type="email" value="{{dataValues.email}}"/>
+        </div>
+        <div class="row">
+            <input class="btn blue accent-4 col s12" type="submit" value="Update" />
+        </div>
+    </form>
+</div>

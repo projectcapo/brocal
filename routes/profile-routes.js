@@ -6,7 +6,7 @@
 // =============================================================
 
 // Requiring our models
-//var db = require("../models");
+var db = require("../models");
 
 // Routes
 // =============================================================
@@ -29,6 +29,18 @@ module.exports = function (app, passport) {
       failureRedirect: '/login'
     }
   ));
+
+  app.put('/api/profile', function(req, res){
+    db.user.update(
+      req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      }).then(function(dbPost) {
+      res.json(dbPost);
+    });
+  });
 
   function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()){

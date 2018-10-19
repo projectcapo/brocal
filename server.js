@@ -34,6 +34,20 @@ app.set("view engine", "handlebars");
 //Load Passport Strategies 
 require('./config/passport/passport.js')(passport, db.user);
 
+// serialize and deserialize user
+passport.serializeUser(function(user, done) {
+  done(null, user._id);
+});
+passport.deserializeUser(function(id, done) {
+  db.User.findById(id, function(err, user){
+      if(!err){
+         done(null, user);
+      }else{
+         done(err, null);
+      }
+    });
+});
+
 // ROUTES 
 require("./routes/profile-routes.js")(app, passport);
 require("./routes/weight-routes.js")(app);
