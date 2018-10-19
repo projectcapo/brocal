@@ -31,11 +31,14 @@ const exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+//Load Passport Strategies 
+require('./config/passport/passport.js')(passport, db.user);
+
 // ROUTES 
+require("./routes/profile-routes.js")(app, passport);
 require("./routes/weight-routes.js")(app);
 require("./routes/food-routes.js")(app);
 require("./routes/alcohol-routes.js")(app);
-require("./routes/profile-routes.js")(app);
 require("./routes/alert-routes.js")(app);
 require("./routes/api-routes.js")(app);
 require("./routes/html-routes.js")(app);
