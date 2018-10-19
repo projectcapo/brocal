@@ -10,7 +10,7 @@
 
 // Routes
 // =============================================================
-module.exports = function(app) {
+module.exports = function(app, passport) {
 
   // GET route for getting all of the todos
   //app.get("/api/XXXX", function(req, res) {
