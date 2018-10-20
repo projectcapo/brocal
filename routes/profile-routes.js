@@ -4,14 +4,13 @@
 
 // Dependencies
 // =============================================================
-
-// Requiring our models
-//var db = require("../models");
+var db = require("../models");
 
 // Routes
 // =============================================================
 module.exports = function (app, passport) {
-
+  // Passport Routes
+  // ===========================================================
   app.get('/logout', function(req, res) {
     req.session.destroy(function(err) {
         res.redirect('/login');
@@ -29,6 +28,35 @@ module.exports = function (app, passport) {
       failureRedirect: '/login'
     }
   ));
+  // Passport routes end
+  // ===========================================================
+
+
+  // API calls -- NO POST because all users are created by passport.
+  // ===============================================================
+  app.get('/api/profile', function(req, res){
+    db.user.findOne({
+      where: {
+        id: req.session.passport.user
+      }
+    }).then(function(dbUser){
+      res.json(dbUser);
+    });
+  });
+
+  app.put('/api/profile', function(req, res){
+    db.user.update(
+      req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      }).then(function(dbUser) {
+      res.json(dbUser);
+    });
+  });
+  // END Api Calls
+  // ===============================================================
 
   function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()){

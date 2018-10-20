@@ -32,7 +32,13 @@ module.exports = function (passport, user) {
                         email: email,
                         password: userPassword,
                         firstname: req.body.firstname,
-                        lastname: req.body.lastname
+                        lastname: req.body.lastname,
+                        age: req.body.age,
+                        sex: req.body.sex,
+                        height: req.body.height,
+                        start_weight: req.body.start_weight,
+                        goal_weight: req.body.goal_weight,
+                        goal_end_date: req.body.goal_end_date
                     };
                     User.create(data).then(function (newUser, created) {
                         if (!newUser) {
