@@ -1,6 +1,14 @@
+// *********************************************************************************
+// api-routes.js - set of routes for displaying and saving data to the db
+// *********************************************************************************
+
+// Dependencies
+// =============================================================
 const path = require("path");
 let db = require("../models");
 
+// Routes
+// =============================================================
 module.exports = function (app) {
 
   app.get("/", function (req, res, next) {
@@ -17,6 +25,7 @@ module.exports = function (app) {
       let fullName = dbUser.dataValues.firstname + ' ' + dbUser.dataValues.lastname;
       res.render("index", { "user": fullName });
     });
+    
   });
 
   app.get("/login", function (req, res) {
@@ -46,6 +55,7 @@ module.exports = function (app) {
       userData.goalEndDate = new Date(dbUser.dataValues.goal_end_date);
       res.render("profile", userData);
     });
+
   });
 
 };
