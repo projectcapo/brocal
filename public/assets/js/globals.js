@@ -5,7 +5,7 @@ $(document).ready(function () {
             if (data.count > 0) {
                 $('#alertCount').css('display', "inline");
                 $('#alertCount').text(data.count);
-            }else{
+            } else {
                 $('#alertCount').css('display', "none");
             }
         });
@@ -27,6 +27,11 @@ $(document).ready(function () {
     // Initializes all materialize javascript components
     // with defaults.
     M.AutoInit();
+
+    // Turn on toobar for FAB
+    $('.fixed-action-btn').floatingActionButton({
+        toolbarEnabled: true
+    });
 
     //Show Alert count on page load.
     showAlertCount();
