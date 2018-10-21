@@ -6,34 +6,74 @@
 // =============================================================
 
 // Requiring our models
-//var db = require("../models");
+var db = require("../models");
+let sequelize = require('sequelize');
 
 // Routes
 // =============================================================
 module.exports = function(app) {
 
-  // GET route for getting all of the todos
-  //app.get("/api/XXXX", function(req, res) {
-    // findAll returns all entries for a table when used with no options
-  //});
+    // GET route for getting all of the alerts for the current user
+    // and then deleting all of those alerts so they won't see them
+    // again.
+    app.get("/api/alert", function(req, res, next) {
+        if (req.isAuthenticated()) {
+            return next();
+        }
+        res.status(401);
+    }, function(req, res) {
+        db.alert.findAll({
+            where: {
+                userId: req.session.passport.user
+            }
+        }).then(function(alerts) {
+            alerts.forEach(function(alert) {
+                db.alert.destroy({
+                    where: {
+                        id: alert.id
+                    }
+                });
+            });
+            res.json(alerts);
+        });
+    });
 
-  // POST route for saving a new todo
-  //app.post("/api/XXXXX", function(req, res) {
-    // create takes an argument of an object describing the item we want to
-    // insert into our table. In this case we just we pass in an object with a text
-    // and complete property
+    //Create a new alert
+    app.post("/api/alert", function(req, res) {
+        db.alert.create({
+            topic: req.data.topic,
+            message: req.data.message,
+            userId: req.session.passport.user
+        }).then(function(alert) {
+            res.json(alert);
+        });
+    });
 
-//  });
+    // Delete all alerts for the current user
+    app.delete("/api/alert", function(req, res) {
+        db.alert.destroy({
+            where: {
+                userId: req.session.passport.user
+            }
+        }).then(function(alert) {
+            res.json(alert);
+        });
+    });
 
-  // DELETE route for deleting items.
-//  app.delete("/api/XXXX/:id", function(req, res) {
-    // Use the sequelize destroy method to delete a record from our table with the
-    // id in req.params.id. res.json the result back to the user
-//  });
+    app.get('/api/alert/count', function(req, res, next) {
+        if (req.isAuthenticated()) {
+            return next();
+        }
+        res.status(401);
+    }, function(req, res) {
+        db.alert.findAll({
+            attributes: [[sequelize.fn('COUNT', sequelize.col('id')), 'count']],
+            where: {
+                userId: req.session.passport.user
+            }
+        }).then(function(alerts) {
+            res.json(alerts[0]);
+        });
+    });
 
-  // PUT route for updating todos. We can get the updated todo data from req.body
-//  app.put("/api/XXXX", function(req, res) {
-    // Use the sequelize update method to update a todo to be equal to the value of req.body
-    // req.body will contain the id of the todo we need to update
-//  });
 };
