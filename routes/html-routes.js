@@ -30,7 +30,7 @@ module.exports = function (app) {
 
   app.get("/login", function (req, res) {
     // Placeholder empty object being passed in
-    res.render("login", {});
+    res.render("login", { layout: 'login-layout' });
   });
 
   app.get("/signup", function (req, res) {
