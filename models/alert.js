@@ -1,32 +1,28 @@
 module.exports = function (sequelize, Sequelize) {
 
-    var Weight = sequelize.define('weight', {
+    var Alert = sequelize.define('alert', {
         id: {
             autoIncrement: true,
             primaryKey: true,
             type: Sequelize.INTEGER
         },
-        currentweight: {
-            type: Sequelize.INTEGER,
-            notEmpty: true
-        },
-        weighedtime: {
-            type: Sequelize.DATE,
-            notEmpty: true
-        },
-        feels: {
+        topic: {
             type: Sequelize.STRING,
             notEmpty: true
         },
+        message: {
+            type: Sequelize.STRING,
+            notEmpty: true
+        }
     });
 
-    Weight.associate = function (models) {
-        Weight.belongsTo(models.user, {
+    Alert.associate = function (models) {
+        Alert.belongsTo(models.user, {
             foreignKey: {
                 allowNull: false
             }
         });
     }
     
-    return Weight;
+    return Alert;
 }
