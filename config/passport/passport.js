@@ -35,7 +35,7 @@ module.exports = function (passport, user) {
                         lastname: req.body.lastname,
                         age: req.body.age,
                         sex: req.body.sex,
-                        height: req.body.height,
+                        height: ((parseInt(req.body.feet) * 12) + parseInt(req.body.inches)).toString(),
                         start_weight: req.body.start_weight,
                         goal_weight: req.body.goal_weight,
                         goal_end_date: req.body.goal_end_date
