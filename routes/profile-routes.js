@@ -33,6 +33,8 @@ module.exports = function (app, passport) {
 
 
   // API calls -- NO POST because all users are created by passport.
+  // No parameters for ID because the user can only work with their 
+  // own profile which is maintained by passport.
   // ===============================================================
   app.get('/api/profile', function(req, res){
     db.user.findOne({
@@ -49,10 +51,10 @@ module.exports = function (app, passport) {
       req.body,
       {
         where: {
-          id: req.body.id
+          id: req.session.passport.user
         }
       }).then(function(dbUser) {
-      res.json(dbUser);
+      res.status(200).end();
     });
   });
   // END Api Calls

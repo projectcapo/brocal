@@ -25,7 +25,7 @@ module.exports = function (app) {
       let fullName = dbUser.dataValues.firstname + ' ' + dbUser.dataValues.lastname;
       res.render("index", { "user": fullName });
     });
-    
+
   });
 
   app.get("/login", function (req, res) {

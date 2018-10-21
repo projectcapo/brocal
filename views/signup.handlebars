@@ -1,19 +1,18 @@
-
 <div class="container">
-    <h4>Account Creation</h4>
+    <h5>Account Creation</h5>
 
     <form class="row" id="signup" name="signup" method="post" action="/signup">
         <div class="input-field inline col s6">
-            <label for="firstname">First Name</label>
+            <label class="active" for="firstname">First Name</label>
             <input name="firstname" type="text" required/>
         </div>
         <div class="input-field inline col s6">
-            <label for="lastname">Last Name</label>
+            <label class="active" for="lastname">Last Name</label>
             <input name="lastname" type="text" required/>
         </div>
         <div class="input-field inline col s6">
-            <label for="age">Age</label>
-            <input name="age" type="number" required/>
+            <label class="active" for="age">Age</label>
+            <input name="age" class="active" type="number" required/>
         </div>
         <div class="input-field inline col s6">
             <select name="sex" required>
@@ -21,31 +20,42 @@
                 <option value="male">Male</option>
                 <option value="female">Female</option>
             </select>
-            <label>Sex</label>
+        </div>
+        <div class="input-field inline col s3">
+            <label class="active" for="feet">Height (ft)</label>
+            <input name="feet" type="number" max="10" required/>
+        </div>
+        <div class="input-field inline col s3">
+            <label class="active" for="inches">Height (in)</label>
+            <input name="inches" type="number" max="12" required/>
         </div>
         <div class="input-field inline col s6">
-            <label for="height">Height</label>
-            <input name="height" type="text" required/>
-        </div>
-        <div class="input-field inline col s6">
-            <label for="start_weight">Start Weight</label>
+            <label class="active" for="start_weight">Start Weight</label>
             <input name="start_weight" type="number" required/>
         </div>
         <div class="input-field inline col s6">
-            <label for="goal_weight">Goal Weight</label>
+            <label class="active" for="goal_weight">Goal Weight</label>
             <input name="goal_weight" type="number" required/>
         </div>
         <div class="input-field inline col s6">
-            <label for="goal_end_date">Goal End Date</label>
+            <label class="active" for="goal_end_date">Goal End Date</label>
             <input class="datepicker" name="goal_end_date" type="text" required/>
         </div>
-        <div class="input-field inline col s6">
-            <label for="email">Email Address</label>
-            <input class="text" name="email" type="email" required/>
+        <div class="input-field inline col s12">
+            <select id="daily_caloric_intake" name="daily_caloric_intake" required>
+                <option value="" disabled selected>Choose Diet Level</option>
+                <option value="1500">1500 Cal/Day</option>
+                <option value="2000">2000 Cal/Day</option>
+                <option value="2500">2500 Cal/Day</option>
+            </select>
         </div>
         <div class="input-field inline col s6">
-            <label for="password">Password</label>
-            <input name="password" type="password" required/>
+            <label class="active" for="email">Email Address</label>
+            <input class="text" name="email" type="email" autocomplete="new-password" required/>
+        </div>
+        <div class="input-field inline col s6">
+            <label class="active" for="password">Password</label>
+            <input name="password" type="password" autocomplete="new-password" required/>
         </div>
         <div class="row">
             <input class="btn blue accent-4 col s12" type="submit" value="Sign Up" />
