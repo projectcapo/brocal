@@ -34,29 +34,18 @@ module.exports = function (app) {
   app.get("/login", function (req, res) {
     res.render("login", { layout: 'login-layout' });
   });
-<<<<<<< Updated upstream
-
-  // This route serves the signup page with the login layout
-  // so the user does not see functionality that requires
-  // authentication.
-  app.get("/signup", function (req, res) {
-    res.render("signup", { layout: 'login-layout' });
-  });
-
-  // This route serves the profile form where the user can
-  // update/change their information.
-=======
  
   app.get("/signup", function (req, res) {
     // Placeholder empty object being passed in
     res.render("signup", {});
-  }); 
+  });
+  
   // adding weight route here for that .js file
   app.get("/weight", function (req, res) {
     // Placeholder empty object being passed in
     res.render("weight", {});
   });
->>>>>>> Stashed changes
+
   app.get("/profile", function (req, res, next) {
     if (req.isAuthenticated()) {
       return next();
@@ -109,11 +98,8 @@ module.exports = function (app) {
         id: req.session.passport.user
       }
     }).then(function (dbUser) {
-      let userData = dbUser;
-      userData.male = dbUser.dataValues.sex === "male";
-      userData.female = dbUser.dataValues.sex === "female";
-      userData.goalEndDate = new Date(dbUser.dataValues.goal_end_date);
-      res.render("index", userData);
+      let fullName = dbUser.dataValues.firstname + ' ' + dbUser.dataValues.lastname;
+      res.render("index", fullName);
     });
   });
 };
