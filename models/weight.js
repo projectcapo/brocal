@@ -10,10 +10,6 @@ module.exports = function (sequelize, Sequelize) {
             type: Sequelize.INTEGER,
             notEmpty: true
         },
-        weighedtime: {
-            type: Sequelize.DATE,
-            notEmpty: true
-        },
         feels: {
             type: Sequelize.STRING,
             notEmpty: true

@@ -10,21 +10,12 @@ module.exports = function (sequelize, Sequelize) {
             type: Sequelize.STRING,
             allowNull: false
         },
-        boozetype: {
-            type: Sequelize.STRING
-        },
-        boozecategory: {
-            type: Sequelize.STRING,
-        },
         servings: {
             type: Sequelize.INTEGER,
             allowNull: false
         },
         calories: {
             type: Sequelize.INTEGER
-        },
-        consumedtime: {
-            type: Sequelize.DATE
         }
     });
 
