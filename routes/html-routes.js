@@ -96,11 +96,8 @@ module.exports = function (app) {
         id: req.session.passport.user
       }
     }).then(function (dbUser) {
-      let userData = dbUser;
-      userData.male = dbUser.dataValues.sex === "male";
-      userData.female = dbUser.dataValues.sex === "female";
-      userData.goalEndDate = new Date(dbUser.dataValues.goal_end_date);
-      res.render("index", userData);
+      let fullName = dbUser.dataValues.firstname + ' ' + dbUser.dataValues.lastname;
+      res.render("index", fullName);
     });
   });
 };
