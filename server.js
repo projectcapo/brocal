@@ -51,9 +51,8 @@ passport.deserializeUser(function(id, done) {
 require("./routes/profile-routes.js")(app, passport);
 require("./routes/weight-routes.js")(app);
 require("./routes/food-routes.js")(app);
-require("./routes/alcohol-routes.js")(app);
+require("./routes/booze-routes.js")(app);
 require("./routes/alert-routes.js")(app);
-require("./routes/api-routes.js")(app);
 require("./routes/html-routes.js")(app);
 
 // Commenting out sequalize code for now
