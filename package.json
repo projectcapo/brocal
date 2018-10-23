@@ -28,7 +28,6 @@
     "hawk": "^7.0.7",
     "mysql": "^2.16.0",
     "mysql2": "^1.6.1",
-    "nutritionix": "^0.6.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "sequelize": "^4.39.1"
