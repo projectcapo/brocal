@@ -1,9 +1,8 @@
 module.exports = function (sequelize, Sequelize) {
-
     var Food = sequelize.define('food', {
         id: {
             autoIncrement: true,
-            primaryKey: true,
+            primaryKey: true,   
             type: Sequelize.INTEGER,
             notEmpty: true
         },
@@ -15,7 +14,7 @@ module.exports = function (sequelize, Sequelize) {
             type: Sequelize.STRING,
             notEmpty: true
         },
-        foodcategory: {
+        mealcategory: {
             type: Sequelize.STRING,
             notEmpty: true
         },
@@ -32,12 +31,15 @@ module.exports = function (sequelize, Sequelize) {
             notEmpty: true
         }
     });
+
     Food.associate = function (models) {
-        Food.belongsTo(models.user, {
-            foreignKey: {
-                allowNull: false
-            }
+        models.food.belongsTo(models.user, {
+          onDelete: "CASCADE",
+          foreignKey: {
+            allowNull: false
+          }
         });
-    }
+      };
+
     return Food;
 }
