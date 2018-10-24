@@ -1,8 +1,74 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.19/js/jquery.dataTables.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.19/js/dataTables.material.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.19/css/dataTables.material.css" />
 
-<h3>Today</h3>
+<!-- Project Booze Javascript -->
+<script src="/assets/js/booze.js"></script>
 
-<ul class="collection">
+<div class="container">
+
+    <br />
+
+     <div class="row">
+        <a href="#addAlcoholForm" class="btn btn-large col s12 modal-trigger blue accent-4">Log Booze</a>
+    </div>
+
+    <div class="row">
+        <h4 class="col s6">Today's Total: <span id="todayTotal"></span></h4>
+    </div>
+
+    <table class="table table-striped table-bordered table-hover compact" id="boozeTableToday">
+        <thead>
+            <tr>
+                <th>Booze Name</th>
+                <th>Servings</th>
+                <th>Calories</th>
+            </tr>
+        </thead>
+    </table>
     
-</ul>
+    <br />
 
 
+    <div class="row">
+        <h4 class="col s6">Booze History</h4>
+    </div>
+
+    <table class="table table-striped table-bordered table-hover compact" id="boozeTable">
+        <thead>
+            <tr>
+                <th>Booze Name</th>
+                <th>Servings</th>
+                <th>Calories</th>
+            </tr>
+        </thead>
+    </table>
+
+</div>
+
+<div id="addAlcoholForm" class="modal">
+    <div class="modal-content">
+        <h4>What are you drinking?</h4>
+        <form>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="drink" type="text" class="validate">
+                    <label for="drink">Booze Name</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="calories" type="number" class="validate">
+                    <label for="calories">Calories</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="servings" type="number" class="validate">
+                    <label for="servings">Servings</label>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect btn-flat">Close</a>
+        <button id="submitDrink" class="modal-close waves-effect blue accent-4 waves-blue btn-flat white-text">Submit</button>
+    </div>
+</div>
