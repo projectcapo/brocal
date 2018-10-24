@@ -34,14 +34,19 @@ module.exports = function (app) {
   app.get("/login", function (req, res) {
     res.render("login", { layout: 'login-layout' });
   });
- 
+
   app.get("/signup", function (req, res) {
     // Placeholder empty object being passed in
     res.render("signup", {});
   });
-  
+
   // adding weight route here for that .js file
-  app.get("/weight", function (req, res) {
+  app.get("/weight", function (req, res, next) {
+    if (req.isAuthenticated()) {
+      return next();
+    }
+    res.redirect('/login');
+  }, function (req, res) {
     // Placeholder empty object being passed in
     res.render("weight", {});
   });
@@ -67,7 +72,7 @@ module.exports = function (app) {
   });
 
   // This route serves the alcohol page
-  app.get("/alcohol", function (req, res, next) {
+  app.get("/booze", function (req, res, next) {
     if (req.isAuthenticated()) {
       return next();
     }
@@ -80,7 +85,6 @@ module.exports = function (app) {
     }).then(function (dbUser) {
       res.render("alcohol", {});
     });
-
   });
 
   // Default route if no others match
@@ -99,7 +103,7 @@ module.exports = function (app) {
       }
     }).then(function (dbUser) {
       let fullName = dbUser.dataValues.firstname + ' ' + dbUser.dataValues.lastname;
-      res.render("index", fullName);
+      res.render("index", { "user": fullName });
     });
   });
 };
