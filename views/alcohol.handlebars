@@ -8,9 +8,17 @@
 
 <div class="container">
 
-    <h3>Today</h3>
+    <br />
 
-    <table class="table table-striped table-bordered table-hover compact" id="boozeTable">
+     <div class="row">
+        <a href="#addAlcoholForm" class="btn btn-large col s12 modal-trigger blue accent-4">Log Booze</a>
+    </div>
+
+    <div class="row">
+        <h4 class="col s6">Today's Total: <span id="todayTotal"></span></h4>
+    </div>
+
+    <table class="table table-striped table-bordered table-hover compact" id="boozeTableToday">
         <thead>
             <tr>
                 <th>Booze Name</th>
@@ -22,9 +30,20 @@
     
     <br />
 
+
     <div class="row">
-        <a href="#addAlcoholForm" class="btn btn-large col s12 modal-trigger blue accent-4">Log Booze</a>
+        <h4 class="col s6">Booze History</h4>
     </div>
+
+    <table class="table table-striped table-bordered table-hover compact" id="boozeTable">
+        <thead>
+            <tr>
+                <th>Booze Name</th>
+                <th>Servings</th>
+                <th>Calories</th>
+            </tr>
+        </thead>
+    </table>
 
 </div>
 

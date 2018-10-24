@@ -60,6 +60,35 @@ module.exports = function (app, passport) {
       }
     });
   });
+
+  app.get("/api/booze/today/calories", function (req, res, next) {
+    if (req.isAuthenticated()) {
+      return next();
+    }
+    res.status(401);
+  }, function (req, res) {
+    var midnightToday = new Date();
+    midnightToday.setHours(0, 0, 0, 0);
+    // findAll returns all entries for a table when used with no options
+    db.booze.findAll({
+      attributes: [
+        [sequelize.fn('sum', sequelize.col('calories')), 'toalCalories']
+      ],
+      where: {
+        userId: req.session.passport.user,
+        createdAt: {
+          [Op.gt]: midnightToday
+        }
+      }
+    }).then(function (dbbooze) {
+      if (dbbooze.length === 0) {
+        res.status(404);
+      } else {
+        res.json(dbbooze);
+      }
+    });
+  });
+
   // POST route for saving a new food entry
   app.post("/api/booze", function (req, res, next) {
     if (req.isAuthenticated()) {

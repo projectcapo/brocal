@@ -1,9 +1,34 @@
 $(document).ready(function () {
 
-    var boozeTable = $('#boozeTable').DataTable({
+    $.get('/api/booze/today/calories', function(data){
+        $('#todayTotal').text(data[0].toalCalories);
+    });
+
+    var boozeTableToday = $('#boozeTableToday').DataTable({
         responsive: true,
         ajax: {
             "url": "/api/booze/today",
+            "dataSrc": ""
+        },
+        columns: [
+            { data: "boozename" },
+            { data: "servings" },
+            { data: "calories" }
+        ],
+        order: [1, 'asc'],
+        select: {
+            style: 'os',
+            selector: 'td:first-child'
+        },
+        buttons: [
+            'update', 'delete'
+        ]
+    });
+
+    var boozeTable = $('#boozeTable').DataTable({
+        responsive: true,
+        ajax: {
+            "url": "/api/booze/",
             "dataSrc": ""
         },
         columns: [
@@ -29,6 +54,7 @@ $(document).ready(function () {
             'calories': $('#calories').val().trim()
         }).done(function () {
             boozeTable.ajax.reload();
+            boozeTableToday.ajax.reload();
         });
     }
 
