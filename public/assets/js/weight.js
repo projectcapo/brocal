@@ -30,7 +30,7 @@ $(document).ready(function () {
         }).done(function () {
             weightTable.ajax.reload();
             $('#weight').val('');
-            $("input[name='weightFeel']:checked").val('');
+            $("input[name='weightFeel']:checked").val('false');
         });
     }
 
