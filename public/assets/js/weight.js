@@ -29,6 +29,8 @@ $(document).ready(function () {
             'feels': $("input[name='weightFeel']:checked").val()
         }).done(function () {
             weightTable.ajax.reload();
+            $('#weight').val('');
+            $("input[name='weightFeel']:checked").val('');
         });
     }
 
