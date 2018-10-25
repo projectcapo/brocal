@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     $.get('/api/booze/today/calories', function(data){
-        $('#todayTotal').text(data[0].toalCalories);
+        $('#todayTotal').text(data[0].totalCalories);
     });
 
     var boozeTableToday = $('#boozeTableToday').DataTable({
@@ -55,6 +55,9 @@ $(document).ready(function () {
         }).done(function () {
             boozeTable.ajax.reload();
             boozeTableToday.ajax.reload();
+            $('#drink').val('');
+            $('#servings').val('');
+            $('#calories').val('');
         });
     }
 

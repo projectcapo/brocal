@@ -14,12 +14,12 @@ $(document).ready(function () {
             $('#start_weight').val(data.start_weight);
             $('#daily_caloric_intake').val(data.daily_caloric_intake);
             var elems = document.querySelectorAll('.datepicker');
-            var instances = M.Datepicker.init(elems, {
+            M.Datepicker.init(elems, {
                 setDefaultDate: true,
                 defaultDate: new Date(data.goal_end_date)
             });
             var elems = document.querySelectorAll('select');
-            var instances = M.FormSelect.init(elems);
+            M.FormSelect.init(elems);
             M.updateTextFields();
         });
     }

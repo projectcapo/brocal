@@ -16,11 +16,7 @@
         "dialect": "mysql"
     },
     "production": {
-        "username": "",
-        "password": null,
-        "database": "brocal_db",
-        "host": "127.0.0.1",
-        "port": "8889",
+        "use_env_variable": "JAWSDB_URL",
         "dialect": "mysql"
     }
 }
