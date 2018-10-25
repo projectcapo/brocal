@@ -2,6 +2,8 @@
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background-color: #f5f5f5;
+    color: #424242;
   }
 
   main {
@@ -16,6 +18,13 @@
     width: 100%;
 }
 
+.dataTables_filter {
+    text-align: left !important;
+    font-size: 14px;
+    font-weight: bold;
+    color: #0D47A1;
+}
+
 /* label color */
 .input-field label {
     color: #0D47A1 !important;
@@ -24,6 +33,19 @@
 .input-field input[type=text]:focus + label {
     color: #0D47A1 !important;
 }
+
+.input-field input[type=text] {
+    color: #0D47A1 !important;
+}
+
+.input-field input[type=email] {
+    color: #0D47A1 !important;
+}
+
+.input-field input[type=number] {
+    color: #0D47A1 !important;
+}
+
 /* label underline focus color */
 .input-field input[type=text]:focus {
     border-bottom: 1px solid #0D47A1 !important;
