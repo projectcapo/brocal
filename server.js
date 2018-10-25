@@ -53,6 +53,7 @@ require("./routes/weight-routes.js")(app);
 require("./routes/food-routes.js")(app);
 require("./routes/booze-routes.js")(app);
 require("./routes/alert-routes.js")(app);
+require("./routes/graph-routes")(app);
 require("./routes/html-routes.js")(app);
 
 // Commenting out sequalize code for now
