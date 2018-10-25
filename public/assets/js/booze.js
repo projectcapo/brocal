@@ -55,6 +55,9 @@ $(document).ready(function () {
         }).done(function () {
             boozeTable.ajax.reload();
             boozeTableToday.ajax.reload();
+            $('#drink').val('');
+            $('#servings').val('');
+            $('#calories').val('');
         });
     }
 
