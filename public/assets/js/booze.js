@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     $.get('/api/booze/today/calories', function(data){
-        $('#todayTotal').text(data[0].toalCalories);
+        $('#todayTotal').text(data[0].totalCalories);
     });
 
     var boozeTableToday = $('#boozeTableToday').DataTable({

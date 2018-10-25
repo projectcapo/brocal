@@ -18,6 +18,13 @@
     width: 100%;
 }
 
+.dataTables_filter {
+    text-align: left !important;
+    font-size: 14px;
+    font-weight: bold;
+    color: #0D47A1;
+}
+
 /* label color */
 .input-field label {
     color: #0D47A1 !important;

@@ -72,7 +72,7 @@ module.exports = function (app, passport) {
     // findAll returns all entries for a table when used with no options
     db.booze.findAll({
       attributes: [
-        [sequelize.fn('sum', sequelize.col('calories')), 'toalCalories']
+        [sequelize.fn('sum', sequelize.col('calories')), 'totalCalories']
       ],
       where: {
         userId: req.session.passport.user,
@@ -81,9 +81,10 @@ module.exports = function (app, passport) {
         }
       }
     }).then(function (dbbooze) {
-      if (dbbooze.length === 0) {
-        res.status(404);
-      } else {
+      console.log(dbbooze);
+      if (dbbooze.dataValues.totalCalories == null){
+        res.json([{totalCalories: 0}]);
+      }else{
         res.json(dbbooze);
       }
     });

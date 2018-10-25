@@ -2,18 +2,14 @@ $(document).ready(function () {
     // Graph Data ##############################################
 
     $.get('/api/weightData', '/api/calData', function (data, err) {
-
-        console.log(data);
-
-
         var graphData = [{
            // calories log
-           label: "calories per day of month",
+           label: "Calories per day of month",
             data: data.calData,
             color: '#71c73e'
         }, {
             //weight log
-            label: "weight per day of month", 
+            label: "Weight per day of month", 
             data: data.weightData,
             color: '#77b7c5',
             points: {
@@ -46,6 +42,9 @@ $(document).ready(function () {
             },
             yaxis: {
                 tickSize: 100
+            },
+            legend: {
+                container: $('#legendContainer')
             }
         });
 
@@ -71,6 +70,9 @@ $(document).ready(function () {
             },
             yaxis: {
                 tickSize: 100
+            },
+            legend: {
+                container: $('#legendContainer')
             }
         });
 
@@ -111,7 +113,7 @@ $(document).ready(function () {
                     $('#tooltip').remove();
                     var x = item.datapoint[0],
                         y = item.datapoint[1];
-                    showTooltip(item.pageX, item.pageY, y + " on day " + x);
+                    showTooltip(item.pageX, item.pageY, y + " on day " + x + ".");
                 }
             } else {
                 $('#tooltip').remove();

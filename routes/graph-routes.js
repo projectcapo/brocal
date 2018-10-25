@@ -14,9 +14,7 @@ function loggedIn(req, res, next) {
 // =============================================================
 module.exports = function (app, passport) {
     // GET route for getting all of the food entries
-
     app.get("/", loggedIn, function (req, res) {
-        console.log("/route");
         db.food.findAll({
             attributes: [
                 'calories', 'createdAt'
@@ -51,8 +49,6 @@ module.exports = function (app, passport) {
                             temp
                         );
                     });
-                    console.log(weightData);
-
                     res.render('index', {
                         cal: dbCal,
                         weight: dbUser.start_weight,
@@ -60,12 +56,10 @@ module.exports = function (app, passport) {
                     });
                 });
             });
-            //console.log(req.session.passport.user);
         });
     });
 
     app.get("/api/weightData", loggedIn, function (req, res) {
-        console.log("/route");
         db.weight.findAll({
             attributes: [
                 'currentweight', 'createdAt'
@@ -87,20 +81,37 @@ module.exports = function (app, passport) {
 
             db.food.findAll({
                 attributes: [
-                    [sequelize.fn('sum', sequelize.col('calories')), 'toalCalories']
+                    'calories', 'createdAt'
                 ],
                 where: {
                     userId: req.session.passport.user,
                 }
             }).then(function (calData) {
-                if (calData.length === 0) {
-                    res.status(404);
-                } else {
-                    res.json({
-                        calData: calData,
-                        weightData: weightData
-                    });
-                }
+                var calorieData = [];
+                calData.forEach(foodRecord => {
+                    var index = -1;
+                    for(var i = 0; i < calorieData.length; i++){
+                        if(calorieData[i][0] == moment(foodRecord.createdAt).dates()){
+                            index = i;
+                            break;
+                        }
+                    }
+                    if(index != -1){
+                        calorieData[index][1] = parseInt(calorieData[index][1]) + parseInt(foodRecord.calories);
+                    }else{
+                        var temp = [
+                            moment(foodRecord.createdAt).dates(),
+                            foodRecord.calories
+                        ]
+                        calorieData.push(
+                            temp
+                        );
+                    }
+                });
+                res.json({
+                    weightData: weightData,
+                    calData: calorieData
+                });
             });
         });
     });
