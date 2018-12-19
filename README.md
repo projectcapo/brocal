@@ -1,4 +1,4 @@
-# brocal
+# brocal v2
  ## Overview: 
  - Simple application using the following frameworks: HTML, CSS (Materialize), JS and MySQL database for the front end. 
  - The application uses Node.js (and node modules), Express.js and Express-handlebars. The Node modules used were the following: authentication – Passport.js. In addition, we used ORM – Sequelize and finally, we used several API’s, which are the following: Nutritionix, myfitnesspal, GET/READ/POST/DELETE. 
