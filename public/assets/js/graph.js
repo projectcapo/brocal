@@ -1,15 +1,15 @@
 $(document).ready(function () {
     // Graph Data ##############################################
-
-    $.get('/api/weightData', '/api/calData', function (data, err) {
+    
+    $.get('/api/weightData', function (data, err) {
         var graphData = [{
            // calories log
-           label: "Calories per day of month",
+           label: "Daily Calorie Intake",
             data: data.calData,
             color: '#71c73e'
         }, {
             //weight log
-            label: "Weight per day of month", 
+            label: "Daily Weight Gain/Loss", 
             data: data.weightData,
             color: '#77b7c5',
             points: {
@@ -33,15 +33,17 @@ $(document).ready(function () {
             grid: {
                 color: '#646464',
                 borderColor: 'transparent',
-                borderWidth: 20,
+                borderWidth: 10,
                 hoverable: true
             },
             xaxis: {
                 tickColor: 'transparent',
-                tickDecimals: 0
+                tickDecimals: 0,
+                title: "test"
+                        
             },
             yaxis: {
-                tickSize: 100
+                tickSize: 200,
             },
             legend: {
                 container: $('#legendContainer')
@@ -75,6 +77,7 @@ $(document).ready(function () {
                 container: $('#legendContainer')
             }
         });
+        console.log(graphData);
 
         // Graph Toggle ############################################
         $('#graph-bars').hide();

@@ -59,6 +59,7 @@ $(document).ready(function () {
             $('#servings').val('');
             $('#calories').val('');
         });
+        location.href = "/booze";
     }
 
     // Bind function to event

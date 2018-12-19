@@ -45,6 +45,7 @@ $(document).ready(function () {
   $("#submit").on("click", function (event) {
       event.preventDefault();
       updateFood();
+      location.href = "/view/food";
     
     // Logs to console
     console.log("Click Triggered");

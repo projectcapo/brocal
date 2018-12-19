@@ -9,7 +9,7 @@
 
 #legendContainer {
 	background-color: #fff;
-	width: 500px;
+	width: 600px;
 	margin: 0 auto;
 }
 
@@ -37,9 +37,9 @@
 /*  Graph Container */
 .graph-container {
 	position: relative;
-	max-width: 500px;
-	width: 500px;
-	height: 300px;
+	max-width: 600px;
+	width: 600px;
+	height: 400px;
 	margin: 0 auto;
 	padding: 50px;
 
@@ -57,7 +57,7 @@
 }
 
 .graph-info {
-	width: 500px;
+	width: 600px;
 	margin-bottom: 10px;
 	margin: 10px auto;
 }
