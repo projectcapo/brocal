@@ -111,7 +111,7 @@
 				// Order and type get a number value from Moment, everything else
 				// sees the rendered value
 			//	return m.format(type === 'sort' || type === 'type' ? 'x' : to);
-				return m.format("dddd, MMMM Do YYYY");  // Formatting for my needs
+				return m.format("dddd, MMMM DD YYYY");  // Formatting for my needs
 		};
 		};
 	}));

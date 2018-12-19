@@ -36,6 +36,17 @@ module.exports = function (app, passport) {
   });
 
   // POST route for saving a new food entry
+  // app.post("/api/weight", function (req, res) {
+
+  //   let dataObj = req.body
+  //   // req.session.passport.user
+  //   dataObj["userId"] = req.session.passport.user;
+  //   console.log(dataObj);
+  //   db.food.create(dataObj).then(function (dbweight) {
+  //     res.json(dbweight);
+  //   });
+  // });
+
   app.post("/api/weight", function (req, res, next) {
     if (req.isAuthenticated()) {
       return next();
@@ -45,7 +56,8 @@ module.exports = function (app, passport) {
     db.weight.create({
       currentweight: req.body.currentweight,
       feels: req.body.feels,
-      userId: req.session.passport.user
+      userId: req.session.passport.user,
+      weighedtime: req.body.weighedtime
     }).then(function (dbweight) {
       // We have access inside of the callback function
       res.json(dbweight);
@@ -84,15 +96,13 @@ module.exports = function (app, passport) {
     // Use the sequelize update method to update a food entry to be equal to the value of req.body
     // req.body will contain the id of the todo we need to update
     db.weight.update(
-      req.body,
-      {
+      req.body, {
         where: {
           id: req.body.id
         }
       }).then(function (dbweight) {
-        res.json(dbweight);
-      });
+      res.json(dbweight);
+    });
   });
 
 };
-

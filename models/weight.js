@@ -14,6 +14,10 @@ module.exports = function (sequelize, Sequelize) {
             type: Sequelize.STRING,
             notEmpty: true
         },
+        weighedtime: {
+            type: Sequelize.DATE,
+            notEmpty: true
+        }
     });
 
     Weight.associate = function (models) {
