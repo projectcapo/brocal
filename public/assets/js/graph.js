@@ -1,22 +1,31 @@
 $(document).ready(function () {
     // Graph Data ##############################################
-    
+
+    var graphData = [];
+    var wgdata;
+    var cgdata; 
+
     $.get('/api/weightData', function (data, err) {
-        var graphData = [{
-           // calories log
-           label: "Daily Calorie Intake",
-            data: data.calData,
-            color: '#71c73e'
-        }, {
+        wgdata = {
             //weight log
-            label: "Daily Weight Gain/Loss", 
-            data: data.weightData,
+            label: "Weight per day of month", 
+            data: data,
             color: '#77b7c5',
             points: {
-                radius: 4,
+                radius: 5,
                 fillColor: '#77b7c5'
             }
-        }];
+        }
+    });
+
+    $.get('/api/calData', function (data, err) {
+        cgdata  = {
+           // calories log
+           label: "Calories per day of month",
+            data: data,
+            color: '#71c73e'
+        };
+        graphData = [wgdata,cgdata];
 
         // Lines Graph #############################################
         $.plot($('#graph-lines'), graphData, {
@@ -26,28 +35,27 @@ $(document).ready(function () {
                     radius: 5
                 },
                 lines: {
-                    show: true
+                    show: false
                 },
                 shadowSize: 0
             },
             grid: {
                 color: '#646464',
                 borderColor: 'transparent',
-                borderWidth: 10,
+                borderWidth: 20,
                 hoverable: true
             },
             xaxis: {
                 tickColor: 'transparent',
-                tickDecimals: 0,
-                title: "test"
-                        
+                tickDecimals: 0
             },
             yaxis: {
-                tickSize: 200,
+                tickSize: 150
             },
             legend: {
                 container: $('#legendContainer')
-            }
+            },
+            easing: 'easeOutBounce'
         });
 
         // Bars Graph ##############################################
@@ -77,7 +85,6 @@ $(document).ready(function () {
                 container: $('#legendContainer')
             }
         });
-        console.log(graphData);
 
         // Graph Toggle ############################################
         $('#graph-bars').hide();

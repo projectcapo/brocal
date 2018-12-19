@@ -7,8 +7,8 @@ $(document).ready(function () {
             "dataSrc": ""
         },
         columns: [
-            { data: "createdAt",
-            render: $.fn.dataTable.render.moment("MMMM Do YYYY") },
+            { data: "weighedtime",
+            render: $.fn.dataTable.render.moment("MMMM DD YYYY") },
             { data: "currentweight" },
             { data: "feels" }
         ],
@@ -24,9 +24,10 @@ $(document).ready(function () {
 
 
     function submitWeight() {
-        $.post('/api/weight/', {
+        $.post('/api/weight', {
             'currentweight': $('#weight').val().trim(),
-            'feels': $("input[name='weightFeel']:checked").val()
+            'feels': $("input[name='weightFeel']:checked").val(),
+            'weighedtime': $('#weighedtime').val().trim()
         }).done(function () {
             weightTable.ajax.reload();
             $('#weight').val('');

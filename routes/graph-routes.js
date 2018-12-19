@@ -10,11 +10,50 @@ function loggedIn(req, res, next) {
         res.redirect('/login');
     }
 }
+
 // Routes
 // =============================================================
+
 module.exports = function (app, passport) {
-    // GET route for getting all of the food entries
-    app.get("/", loggedIn, function (req, res) {
+    // GET route for getting all counts for graphing
+    app.get("/api/calData",loggedIn, function (req, res) { 
+       var rJson = []; // This will be the object we return  
+        db.food.findAll({
+            attributes: [
+                'calories', 'consumedtime'
+            ],
+            where: {
+                userId: req.session.passport.user
+            }
+        }).then(function (calData) {
+            var calorieData = [];
+            calData.forEach(foodRecord => {
+                var index = -1;
+                for(var i = 0; i < calorieData.length; i++){
+                    if(calorieData[i][0] == moment(foodRecord.consumedtime).format('DD')){
+                        console.log(calorieData[i][0], foodRecord.consumedtime);
+                        index = i;
+                        console.log(moment(foodRecord.consumedtime).date());
+                        break;
+                    }
+                }
+                if(index != -1){
+                    calorieData[index][1] = parseInt(calorieData[index][1]) + parseInt(foodRecord.calories);
+                }else{
+                    var temp = [
+                        moment(foodRecord.consumedtime).format('DD'),
+                        foodRecord.calories
+                    ]
+                    calorieData.push(
+                        temp
+                    );
+                }
+            });
+            res.json(calorieData);
+        });
+    });
+
+/*     app.get("/", loggedIn, function (req, res) {
         db.food.findAll({
             attributes: [
                 'calories', 'createdAt'
@@ -57,12 +96,12 @@ module.exports = function (app, passport) {
                 });
             });
         });
-    });
+    }); */
 
     app.get("/api/weightData", loggedIn, function (req, res) {
         db.weight.findAll({
             attributes: [
-                'currentweight', 'createdAt'
+                'currentweight', 'weighedtime'
             ],
             where: {
                 userId: req.session.passport.user
@@ -71,15 +110,15 @@ module.exports = function (app, passport) {
             var weightData = [];
             dbWeight.forEach(weight => {
                 var temp = [
-                    moment(weight.createdAt).dates(),
+                    moment(weight.weighedtime).dates(),
                     weight.currentweight
                 ]
                 weightData.push(
                     temp
                 );
             });
-
-            db.food.findAll({
+/* 
+           db.food.findAll({
                 attributes: [
                     'calories', 'createdAt'
                 ],
@@ -106,13 +145,13 @@ module.exports = function (app, passport) {
                         calorieData.push(
                             temp
                         );
-                    }
-                });
-                res.json({
-                    weightData: weightData,
-                    calData: calorieData
-                });
+                    } 
+                }); */
+                res.json(
+                    weightData 
+                    //weightData: weightData
+                    // calData: calorieData
+                );
             });
         });
-    });
 }
